@@ -1,0 +1,39 @@
+#### this app ####
+
+node_modules
+dist
+.tmp
+.sass-cache
+bower_components
+test/bower_components
+
+
+####### common ignores below #######
+
+# Eclipse/RAD
+.settings/
+.metadata/
+classes/
+
+# JetBrains IntellijIDEA/WebStorm
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Numerous always-ignore extensions
+*.diff
+*.bak
+*.tmp
+*.moved
+*.err
+*.orig
+*.log
+*.rej
+*.swo
+*.swp
+*.zip
+*.vi
+*~
