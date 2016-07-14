@@ -1,0 +1,162 @@
+
+    Rules
+
+Syntax
+===================================================
+
+    Automatic Semicolon Insertion
+    -----------------------------
+    
+1. Use semicolons in conjunction with a Linting tool to prevent potentiall issues with automatic semicolon insertion
+
+    Reasons:
+        avoid unexpected behavior
+        consistency with other languages
+        
+        
+    Linting
+    --------
+        
+2. Use JSHint, or ESLint if customizations are needed, as your linting tool
+
+    Quick comparison of the three JavaScript linting tools
+
+    JSLint
+        1st linting tool in 2002
+        preconfigured
+        not very configurable
+        
+    JSHint
+        a fork of JSLint
+        much more configurable
+        built in package support
+        Not extensible..
+        
+    ESLint 
+        most recent of the three
+        custom rule support
+        very configurable    
+
+  Curly Braces
+  ------------
+  
+3. Use Curly brace on the same line.  
+
+    This is not only a convention but a safe practice due to Automatic Semicolon Insertion in JavaScript.
+
+    function service() {
+        var get = .. 
+        var set = ..
+        return {
+            get: get,
+            set: set
+        }
+    }
+    
+    
+    Equality
+    --------
+    
+4. Equality - use (===) as default.
+
+    The best practice for equality test is to use triple equals by default to avoid type coercion.
+    
+    Configure your Linting tool to enforce (===) use.
+    
+5. Existence test - use typeof undefined
+
+    The best and safe practice for existence test is to use:
+    
+    if (typeof x !== 'undefined' ) {
+        // do work
+    }
+    
+    
+    Variables
+    ---------
+    
+6. All var declarations go to the top of your scope
+
+    Reason: Hoisting is unique to JavaScript compared to other common languages and could cause unexpected behavior.
+    
+    Functions
+    ---------
+    
+7. JavaScript Functions best practices
+
+    1. declare your variables first
+    2. create your functions second
+    3. run code last
+
+    This order applies to global scope or function scope.
+    
+    
+    
+
+Behaviors
+===================================================    
+
+8. Use strict mode in global scope
+
+    "JavaScript is trying to help.. Don't let it."
+
+    JavaScript tries to fix syntax errors when it finds them, but it doesn't always get it right.
+    
+    'use strict';  // at the top of your JavaScript file
+    
+9.  Use "writable: false" to declare constant/read-only properties
+
+    "writable: false" will only work in combination with 'use strict'
+    
+10. use parseInt() to create octal numbers
+
+    'use strict' will disallow JavaScript to create octal numbers when it finds leading zero.  E.g.:
+    
+        012
+    
+    This will disable unpredicatble behavior due to typos and user errors.
+    
+    use parseInt to create octal numbers instead:
+    
+        parseInt(12,8);
+        
+        
+11. do not use 'with' 
+
+    'strict' mode will disallow the use of 'with'
+    
+12. use '_this' or 'self' instead of 'this'
+
+    because 'this' will get a different reference as the execution context changes, the best practice is to create a copy of 'this' early in the function and use it instead of 'this'
+    
+    var obj = function(){
+        var self = this;
+        
+        self.hello = 'hello';
+        
+        self.greet = function(){
+            console.log(self.hello);
+        }
+    }
+    
+    
+
+Async Patterns
+===================================================      
+
+13. use named functions
+
+    - avoid "christmas" tree code
+    - avoid callback hell
+
+
+14. use 'return' to ensure that you exit from a function
+    E.g.:
+
+    function findUser(err, db) {
+        if (err) {
+            return done(err, null);
+        }
+    }
+
+15. 
