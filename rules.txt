@@ -159,4 +159,4 @@ Async Patterns
         }
     }
 
-15. 
+15. use promises to manage callbacks and "christmas tree" code

@@ -356,7 +356,58 @@ Async Patterns
         
 Callback hell - christmas tree looking code.
 
+Rule 1: no one says you have to use anonymous functions.
 
 
+Promises
+---------
+
+    extract callbacks 
+    provide separation of concern
+    
+Here is a typicaly christmas tree code:
+
+    function asyncMethod(message, db) {
+        setTimeout(function(){
+            console.log(message);
+            cb();
+        }, 500)
+    }
+
+    asyncMethod('Open DB Connection', function(){
+        asyncMethod('Find user', function(){
+            asyncMethod('validate user', function(){
+                asyncMethod('do stuff', fumnction(){})
+            }
+        })
+    })
+
+Let's fix this using promises...
+A promise makes our functions "thennable"
+
+promisejs.org
+
+function asyncMethod(message, db) {
+    return new Promise(function(fulfill, reject){
+        setTimeout(function(){
+            console.log(message);
+            fulfill();
+        }, 500);
+    
+    })
+}
+
+asyncMethod('Open DB Connection')
+.then(function(){asyncMethod('Find User')})
+.then(function(){asyncMethod('Validate User')})
+.then(function(){asyncMethod('Do Stuff')})
+.then(function(){});
+
+
+asyncMethod('Open DB Connection')
+.then(findUser
+.then(validateUser)
+.then(doStuff
+.then(function(){});
         
     
