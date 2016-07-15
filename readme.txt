@@ -385,29 +385,103 @@ Here is a typicaly christmas tree code:
 Let's fix this using promises...
 A promise makes our functions "thennable"
 
-promisejs.org
+// fix the above code by using promises 
+// promisejs.org
+// <script src="https://www.promisejs.org/polyfills/promise-7.0.4.min.js"></script>
 
-function asyncMethod(message, db) {
-    return new Promise(function(fulfill, reject){
-        setTimeout(function(){
-            console.log(message);
-            fulfill();
-        }, 500);
-    
-    })
-}
+  function asyncMethod(message) {
+    return new Promise(function (fulfill, reject) {
+      setTimeout(function () {
+        console.log(message);
+        fulfill();
+      }, 500)
+    });
+  }
 
-asyncMethod('Open DB Connection')
-.then(function(){asyncMethod('Find User')})
-.then(function(){asyncMethod('Validate User')})
-.then(function(){asyncMethod('Do Stuff')})
-.then(function(){});
+  // get rid of anonymous functions
 
+  function findUser() {
+    return asyncMethod('Find User');
+  }
 
-asyncMethod('Open DB Connection')
-.then(findUser
-.then(validateUser)
-.then(doStuff
-.then(function(){});
+  function validateUser(){
+    return asyncMethod('Validate User');
+  }
+
+  function doStuff(){
+    return asyncMethod('do stuff');
+  }
+
+  asyncMethod('Open DB Connection')
+    .then(findUser)
+    .then(validateUser)
+    .then(doStuff)
+    .then(function(){});
         
     
+Using ES6 and Babel
+-------------------
+
+You should be using ES6 code.
+
+Babel = JavaScript compiler allowing to you to use next gen JavaScript in the browser before it supports it.
+
+
+Async / Await
+-------------------
+
+Async functions
+  - build upon ES6 promises
+  - use generators for async programming to allow you to use simple semantic syntax
+
+http://kangax.github.io/compat-table/es6
+
+Babel-core supports Async functions in stage 3.
+
+
+$ npm install -save babel-preset-stage-3
+
+.babelrc
+
+{
+  "presets": [
+    "stage-3"
+  ],
+  "plugins": []
+}
+
+
+Production Code 
+===================================================   
+
+
+NPM
+----
+
+Use NPM to get
+
+$ npm init
+
+- package.json
+- 
+
+Environment
+------------
+
+
+
+Simplify Your World
+-------------------
+
+Don't get confused "Getting Things Done the Simple Way" with "Using the Tool"
+
+
+  Best practices !== Toolset
+  
+Keep your enviroment simple.
+Don't use things because they are cool, but because they actually help you get the job done.
+
+
+
+
+

@@ -160,3 +160,38 @@ Async Patterns
     }
 
 15. use promises to manage callbacks and "christmas tree" code
+
+
+
+ES6 and Babel
+==================================================
+
+16. use ES6 features 
+
+  use Babel in conjunction with a build tool to compile browser-compatible code from your ES6 code.
+
+
+Async / Await
+==================================================
+
+17. Look into using ES7 Async functions in place of promises
+
+  ES7 Async functions
+  - build upon ES6 promises
+  - use generators for async programming to allow you to use simple semantic syntax
+
+
+
+Production Code 
+===================================================   
+
+
+18. Simplify Your World
+------------------------
+
+  Best practices !== Toolset
+  
+  Keep your enviroment simple.
+  Don't use things because they are cool, but because they actually help you get the job done.
+
+
